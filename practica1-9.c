@@ -40,16 +40,18 @@ o sea la función no podrá modificarlos pero, en algunos compiladores tales com
 K&R el comportamiento es indefinido)
 */
 
-char *reverse(char *string){
-    int length = strLargo(string) -1;
+char *reverse(char *string)
+{
+    int length = strLargo(string)-1;
     char *aux;
     int count = 0;
 
     for (int i = length; i >= 0; i--)
     {
-        *(aux+count) = *(string+i);
+        *(aux+count) = *(string + i);
+        count++;
     }
-    
+
     return aux;
 } // retorna una cadena que es string invertida
 
@@ -106,7 +108,11 @@ void strMayMin(char *destino, const char *origen, may_min m)
         {
             if (*(origen + contador) >= 'a' && *(origen + contador) <= 'z')
             {
-                *(destino + contador) = *(origen + contador)- 32;
+                *(destino + contador) = (*(origen + contador) - 32);
+            }
+            else
+            {
+                *(destino + contador) = (*(origen + contador));
             }
             contador++;
         }
@@ -118,6 +124,10 @@ void strMayMin(char *destino, const char *origen, may_min m)
             if (*(origen + contador) >= 'A' && *(origen + contador) <= 'Z')
             {
                 *(destino + contador) = (*(origen + contador) + 32);
+            }
+            else
+            {
+                *(destino + contador) = (*(origen + contador));
             }
             contador++;
         }
@@ -154,9 +164,5 @@ int main()
     printf("La cadena: %s invertida queda: %s\n", text1, reves);
 
     return 0;
-}
-/*
 
-    reves = reverse(text1);
-    printf("La cadena: %s invertida queda: %s\n", text1, reves);
-*/
+}
